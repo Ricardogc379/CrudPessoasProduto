@@ -1,0 +1,40 @@
+﻿@model TesteTimipro.Models.Produto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>EXCLUIR</h2>
+
+<h3>Desaja excluir este registro?</h3>
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="EXCLUIR" class="btn btn-danger btn-sm" /> |
+            @Html.ActionLink("RETORNAR A LISTA", "Index", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    }
+</div>

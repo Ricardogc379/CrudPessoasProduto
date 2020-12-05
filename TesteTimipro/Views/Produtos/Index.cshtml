@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TesteTimipro.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>LISTA DE PRODUTOS</h4>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-8">
+        @Html.ActionLink("CADASTRAR PRODUTO", "Create", null, new { @class = "btn btn-success btn-block btn-sm" })
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive" id="datatable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </th>
+                    <th>EDITAR</th>
+                    <th>DETALHAR</th>
+                    <th>EXCLUIR</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @if (item.Ativo == true)
+                            {
+                                <text>SIM</text>
+                            }
+                            else
+                            {
+                                <text>NÃO</text>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("EDITAR", "Edit", new { id = item.ID }, new { @class = "btn btn-warning btn-sm btn-block" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("DETALHES", "Details", new { id = item.ID }, new { @class = "btn btn-info btn-sm btn-block" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("EXCLUIR", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-sm btn-block" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
